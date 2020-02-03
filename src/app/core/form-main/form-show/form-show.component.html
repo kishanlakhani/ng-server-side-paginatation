@@ -1,0 +1,74 @@
+<!-- <a  -->
+  
+<button
+class="btn btn-primary m-2"
+[routerLink]="['../add']" routerLinkActive="router-link-active" 
+>
+
+  Add Employee
+</button>
+<!-- </a > -->
+
+<!-- salary sorting -->
+  <button
+  type="button"
+class="btn btn-primary m-2"
+(click)="onSortClick(page)"
+>
+Sort by salary
+</button>
+
+
+<p *ngIf="isLoading">Loading Data....</p>
+
+<div class="table-responsive" *ngIf="!isLoading"> 
+    <!--Table-->
+    <table class="table table-striped">
+  
+      <!--Table head-->
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Salary</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <!--Table head-->
+  
+      <!--Table body-->
+      <tbody>
+        <tr *ngFor="let list of formListData;
+                    let i = index;
+                    ">
+          <th scope="row">{{i +1 + (page-1)*10 }}</th>
+          <td>{{list.name}}</td>
+          <td>{{list.email}}</td>
+          <td>{{list.salary}}</td>
+          <td><button 
+            class="btn btn-primary" 
+            [routerLink]="['../add',list.id]" routerLinkActive="router-link-active" >Edit</button></td>
+          <td><button 
+            (click)="onDeleteCall(list.id)"
+            class="btn btn-danger"
+            >Delete</button></td>
+        </tr>
+       
+      </tbody>
+      <!--Table body-->
+    </table>
+    <!--Table-->
+  </div>
+
+  <pagination 
+        [totalItems]="bigTotalItems" 
+        [(ngModel)]="bigCurrentPage" 
+        [maxSize]="maxSize"
+        (click)="onPageClick(bigCurrentPage)"
+        ></pagination>
+
+
+        {{page}}
+        {{ bigCurrentPage }}
