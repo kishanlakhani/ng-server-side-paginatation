@@ -20,8 +20,6 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
-    "@fortawesome/angular-fontawesome": "^0.5.0",
-    "angular-font-awesome": "^3.1.2",
     "bootstrap": "^4.4.1",
     "json-server": "^0.15.1",
     "ngx-bootstrap": "^5.3.2",

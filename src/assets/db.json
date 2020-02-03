@@ -125,6 +125,12 @@
       "email": "a@gmail.com",
       "salary": 14263,
       "id": 21
+    },
+    {
+      "name": "kalp",
+      "email": "kalp@gmail.com",
+      "salary": "15263",
+      "id": 22
     }
   ],
   "posts": [
