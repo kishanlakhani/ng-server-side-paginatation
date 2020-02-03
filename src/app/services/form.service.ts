@@ -25,16 +25,16 @@ export class FormService  {
   ) { }
 
 
-  getJsonLength(): Observable<IForm[]>{
-    return this.http.get(this.dbUrl).pipe(map((d:IForm)=>{
+  getJsonLength(){
+    return this.http.get<IForm>(this.dbUrl).pipe(map((d:IForm)=>{
         return d.map(d=>d);
     }))
   }
 
-  getJsonData(page,sort): Observable<IForm[]>{
+  getJsonData(page,sort){
   
       // return this.http.get(this.dbUrl).pipe(map((d:IForm)=>[...d]))
-      return this.http.get(this.dbUrl+'?_page='+page+'&_limit=5'+'&_sort='+sort+'&_order=desc')
+      return this.http.get<IForm>(this.dbUrl+'?_page='+page+'&_limit=5'+'&_sort='+sort+'&_order=desc')
       .pipe(map((d:IForm)=>{
         return d.map((d1)=>{
           return {id:d1.id,name:d1.name,email:d1.email,salary:d1.salary}
@@ -49,18 +49,18 @@ export class FormService  {
   // }
 
   updateJsonData({id,name,email,salary}){
-    return this.http.put(this.dbUrl+'/'+id,{name,email,salary})
+    return this.http.put<IForm>(this.dbUrl+'/'+id,{name,email,salary})
   }
   addJsonData({name,email,salary}){
-    return this.http.post(this.dbUrl,{name,email,salary});
+    return this.http.post<IForm>(this.dbUrl,{name,email,salary});
   }
   
   getSingleJsonData(id){
-    return this.http.get(this.dbUrl+'/'+id);
+    return this.http.get<IForm>(this.dbUrl+'/'+id);
   }
 
   deleteJsonData(id){
-    return this.http.delete(this.dbUrl+'/'+id);
+    return this.http.delete<IForm>(this.dbUrl+'/'+id);
   }
 
 }

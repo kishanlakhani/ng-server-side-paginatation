@@ -1,1 +1,30 @@
-<p>auth works!</p>
+<div class="alert alert-danger" *ngIf="error" role="alert">
+    {{ error }}
+  </div>
+
+  <div *ngIf="isLoading">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+
+<form #authForm="ngForm" (ngSubmit)="onAuthFormSubmit(authForm.value)" *ngIf="!isLoading"> 
+  
+    <div class="container"> 
+        <label><b>Email</b></label> 
+        <input type="text" placeholder="Enter Username" name="email" ngModel email required> 
+
+        <label><b>Password</b></label> 
+        <input type="password" placeholder="Enter Password" name="password" ngModel 
+        minlength="8"
+        required> 
+
+        <button type="submit" class="btn btn-primary" [disabled]="!authForm.valid">{{ isLoggedIn ? "Login":"Signup" }}</button>
+        
+        <br>
+        <button type="button" class="btn btn-primary" (click)="onSwitchMode()" >{{ !isLoggedIn ? "Login":"Signup" }}</button> 
+
+    </div> 
+
+    
+</form> 
+
+

@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Route } from '@angular/compiler/src/core';
 import { IForm } from 'src/app/model/form.model';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-form-show',
@@ -25,8 +26,9 @@ export class FormShowComponent implements OnInit {
   constructor(
     private formService:FormService,
     private router:Router,
-    private route:ActivatedRoute
-  ) { }
+    private route:ActivatedRoute,
+    private authService:AuthService   
+    ) { }
 
   ngOnInit() {
 
@@ -71,12 +73,11 @@ export class FormShowComponent implements OnInit {
       err=>{},
       ()=>{
       })
-
     })
+  }
 
-
-    
-     
+  onLogOut(){
+    this.authService.logout();
   }
 
   ngOnDestroy(): void {

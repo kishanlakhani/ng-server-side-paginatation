@@ -7,7 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-server-side-pagination-and-sorting';
-  maxSize = 5;
-  bigTotalItems = 175;
-  bigCurrentPage = 1;
+ 
 }
